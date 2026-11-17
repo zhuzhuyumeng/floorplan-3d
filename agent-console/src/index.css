@@ -1,0 +1,90 @@
+:root {
+  --bg-0: #0f1419;
+  --bg-1: #171e26;
+  --bg-2: #1f2833;
+  --ink: #e8eef4;
+  --ink-muted: #9aa8b5;
+  --accent: #3d9b8f;
+  --accent-2: #c4a35a;
+  --danger: #d4655a;
+  --line: color-mix(in oklab, var(--ink) 14%, transparent);
+  --radius: 6px;
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-ui: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  color: var(--ink);
+  background: var(--bg-0);
+  font-family: var(--font-ui);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(900px 520px at 18% -8%, rgba(61, 155, 143, 0.22), transparent 55%),
+    radial-gradient(700px 420px at 92% 8%, rgba(196, 163, 90, 0.14), transparent 50%),
+    linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 55%, #121820 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image:
+    linear-gradient(rgba(232, 238, 244, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 238, 244, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 40% 20%, black 20%, transparent 75%);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--accent);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
