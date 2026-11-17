@@ -51,23 +51,29 @@ registerExtension({
 
 See `src/extensions/` for types and the built-in activity-log stub.
 
-## Windows Desktop shortcut
+## Windows one-click Desktop shortcut
 
-User OS is Windows. Shortcuts live under `scripts/` (copied to `dist/` on build):
+User OS is Windows. Launchers live under `scripts/` (copied to `dist/` on build):
 
 | File | Purpose |
 |------|---------|
-| `scripts/Agent Console.url` | Internet Shortcut → `http://127.0.0.1:5173/` |
-| `scripts/install-desktop-shortcut.ps1` | Writes `.url` + `.lnk` to the user Desktop |
+| `scripts/start-agent-console.ps1` | Checkout PR branch, `npm install`, `npm run dev`, open browser |
+| `scripts/Start Agent Console.bat` | Double-click wrapper (`-ExecutionPolicy Bypass` for that run only) |
+| `scripts/install-desktop-shortcut.ps1` | Installs Desktop `.lnk` → launcher (+ `.url` fallback) |
+| `scripts/Agent Console.url` | Browser-only fallback → `http://127.0.0.1:5173/` |
+
+**Install once (from the repo root on Windows):**
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\agent-console\scripts\install-desktop-shortcut.ps1
+```
+
+Then double-click **Agent Console** on the Desktop. Or run without installing:
 
 ```powershell
 cd agent-console
-powershell -ExecutionPolicy Bypass -File .\scripts\install-desktop-shortcut.ps1
-# optional custom port:
-powershell -ExecutionPolicy Bypass -File .\scripts\install-desktop-shortcut.ps1 -Url "http://127.0.0.1:5174/"
+.\scripts\"Start Agent Console.bat"
 ```
-
-Or right-click `install-desktop-shortcut.ps1` → **Run with PowerShell**. Start `npm run dev` before using the shortcut.
 
 ## Project layout
 

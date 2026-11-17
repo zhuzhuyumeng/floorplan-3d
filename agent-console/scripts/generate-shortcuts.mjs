@@ -1,5 +1,5 @@
 /**
- * Copies Windows Desktop shortcut artifacts into dist/ on build.
+ * Copies Windows Desktop shortcut / launcher artifacts into dist/ on build.
  */
 import { copyFileSync, mkdirSync, writeFileSync, existsSync, readdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -22,11 +22,16 @@ writeFileSync(join(scripts, 'Agent Console.url'), urlContents, 'utf8')
 for (const name of [
   'install-desktop-shortcut.ps1',
   'create-desktop-shortcut.ps1',
+  'start-agent-console.ps1',
+  'Start Agent Console.bat',
 ]) {
   const src = join(scripts, name)
   if (existsSync(src)) copyFileSync(src, join(dist, name))
 }
 
-console.log('Windows shortcut artifacts:', readdirSync(dist).filter((f) =>
-  f.endsWith('.url') || f.endsWith('.ps1'),
-))
+console.log(
+  'Windows launcher artifacts:',
+  readdirSync(dist).filter(
+    (f) => f.endsWith('.url') || f.endsWith('.ps1') || f.endsWith('.bat'),
+  ),
+)
